@@ -1,0 +1,10 @@
+/monthly_challenges/__pycache__
+
+
+*.log
+*.log.*
+*.log.*.*
+*.log.*.*.*
+*.log.*.*.*.*
+
+

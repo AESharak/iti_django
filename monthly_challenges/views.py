@@ -31,5 +31,6 @@ def month_challenge_by_number(request,month):
     return HttpResponseRedirect(url)
 
 def monthly_challenge(request):
-   data = render_to_string("monthly_challenges/index.html")
-   return HttpResponse(data)
+#    data = render_to_string("monthly_challenges/index.html")
+#    return HttpResponse(data)
+    return render(request,"monthly_challenges/index.html")
