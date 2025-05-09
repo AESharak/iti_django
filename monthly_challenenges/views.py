@@ -26,8 +26,9 @@ def month_challenge_by_name(request,month):
 
 def month_challenge_by_number(request,month):
     months = list(months_challenges.keys())
-    return HttpResponseRedirect(reverse("month_challenge_by_name",args=[months[month-1]]))
-    # return HttpResponse(f"challenge for {month}")
+    url = reverse("month_challenge_by_name",args=[months[month-1]])
+    return HttpResponseRedirect(url)
+   
 
 
 
