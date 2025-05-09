@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 # Create your views here.
 
 months_challenges = {
@@ -28,7 +29,7 @@ def month_challenge_by_number(request,month):
     months = list(months_challenges.keys())
     url = reverse("month_challenge_by_name",args=[months[month-1]])
     return HttpResponseRedirect(url)
-   
 
-
-
+def monthly_challenge(request):
+   data = render_to_string("monthly_challenges/index.html")
+   return HttpResponse(data)

@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class MonthlyChallenengesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'monthly_challenenges'
+    name = 'monthly_challenges'
