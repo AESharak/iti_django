@@ -7,10 +7,9 @@
   </head>
   <body>
     <h1>Monthly Challenges</h1>
-    <!-- <ul>
-        {% for month in months %}
-            <li><a href="{% url 'month_challenge_by_name' month %}">{{ month|title }}</a></li>
-        {% endfor %}
-    </ul> -->
+    <p>{{ month|title }}</p>
+    <h2>{{ text }}</h2>
+    <h2>{{ number }}</h2>
+    <a href="{% url 'index' %}">All Challenges</a>
   </body>
 </html>

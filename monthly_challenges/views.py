@@ -20,10 +20,18 @@ months_challenges = {
     "december": "spend time with family",
 }
 def index(request):
-    return HttpResponse("Hello, World!, You're at the monthly challenges index.")
+    months = list(months_challenges.keys())
+    return render(request,"monthly_challenges/all.html",context={
+        "all_months": months
+    })
 
 def month_challenge_by_name(request,month):
-    return HttpResponse(f"{months_challenges[month]} in {month}")
+    # return HttpResponse(f"{months_challenges[month]} in {month}")
+    return render(request,"monthly_challenges/index.html",{
+        "text": months_challenges[month],
+        "month": month
+    })
+
 
 def month_challenge_by_number(request,month):
     months = list(months_challenges.keys())
@@ -33,4 +41,7 @@ def month_challenge_by_number(request,month):
 def monthly_challenge(request):
 #    data = render_to_string("monthly_challenges/index.html")
 #    return HttpResponse(data)
-    return render(request,"monthly_challenges/index.html")
+    return render(request,"monthly_challenges/index.html",context={
+        "text": "Hello",
+        "number": 10
+    })
