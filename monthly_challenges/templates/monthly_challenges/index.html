@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monthly Challenges</title>
-  </head>
-  <body>
-    <h1>Monthly Challenges</h1>
-    <p>{{ month|title }}</p>
-    <h2>{{ text }}</h2>
-    <h2>{{ number }}</h2>
-    <a href="{% url 'index' %}">All Challenges</a>
-  </body>
-</html>
+{% extends "shared/base.html" %} {% block title %} {{ month|title }} Challenge
+{% endblock %} {% block content %}
+<p>{{ month|title }}</p>
+<h2>{{ text }}</h2>
+<h2>{{ number }}</h2>
+<a href="{% url 'index' %}">All Challenges</a>
+{% endblock %}
