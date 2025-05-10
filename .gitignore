@@ -1,20 +1,82 @@
-/monthly_challenges/__pycache__
-
-
+# Django #
 *.log
-*.log.*
-*.log.*.*
-*.log.*.*.*
-*.log.*.*.*.*
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
 
-./db.sqlite3
+# If you're using PostgreSQL
+*.sql
 
+# Python #
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-.DS_Store
+# Unit test / coverage reports #
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
 
+# Environments #
 .env
-
-.env.local
-
+.venv
+env/
 venv/
+ENV/
+env.bak/
+venv.bak/
 
+# IDE specific files #
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*.sublime-workspace
+*.sublime-project
+
+# macOS #
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows #
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Project specific #
+/static/
+/staticfiles/
+/mediafiles/
