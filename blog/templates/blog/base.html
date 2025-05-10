@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Django Blog{% endblock %}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }
+      h1 {
+        color: #333;
+      }
+      .post {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+      }
+      .post-title {
+        color: #2c5282;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+      .post-title:hover {
+        text-decoration: underline;
+      }
+      .post-image {
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
+      }
+      .post-date {
+        color: #718096;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a
+          href="{% url 'post_list' %}"
+          style="text-decoration: none; color: inherit"
+          >My Django Blog</a
+        >
+      </h1>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+  </body>
+</html>
