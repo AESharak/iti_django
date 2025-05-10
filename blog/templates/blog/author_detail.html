@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %} {% block title %}{{ author.get_full_name }}{%
+endblock %} {% block content %}
+<div class="author-detail">
+  <h2>{{ author.get_full_name }}</h2>
+
+  {% if author.image %}
+  <img
+    src="{{ author.image.url }}"
+    alt="{{ author.get_full_name }}"
+    class="author-image"
+  />
+  {% endif %}
+
+  <div class="author-info">
+    <p><strong>Email:</strong> {{ author.email }}</p>
+    <p><strong>Phone:</strong> {{ author.phone_number }}</p>
+    <p><strong>Posts:</strong> {{ author.get_post_count }}</p>
+  </div>
+
+  <div class="author-actions">
+    <a href="{% url 'post_list' %}" class="btn btn-secondary"
+      >Back to all posts</a
+    >
+    <a href="{% url 'delete_author' author.pk %}" class="btn btn-danger"
+      >Delete Author</a
+    >
+  </div>
+
+  <h3>Posts by {{ author.get_full_name }}</h3>
+  {% if posts %}
+  <div class="posts">
+    {% for post in posts %}
+    <div class="post">
+      <a href="{{ post.get_absolute_url }}" class="post-title"
+        >{{ post.title }}</a
+      >
+      <p class="post-date">Posted on {{ post.created_at|date:"F j, Y" }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No posts by this author.</p>
+  {% endif %}
+</div>
+{% endblock %}

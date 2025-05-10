@@ -3,6 +3,15 @@
 <article class="post-detail">
   <h2>{{ post.title }}</h2>
   <p class="post-date">Posted on {{ post.created_at|date:"F j, Y" }}</p>
+  <p class="post-author">
+    By {% if post.author %}
+    <a href="{% url 'author_detail' post.author.pk %}"
+      >{{ post.author.get_full_name }}</a
+    >
+    {% else %}
+    <span>Unknown Author</span>
+    {% endif %}
+  </p>
 
   {% if post.image %}
   <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image" />
@@ -10,6 +19,47 @@
 
   <div class="post-content">{{ post.content|linebreaks }}</div>
 
-  <p><a href="{% url 'post_list' %}">&larr; Back to all posts</a></p>
+  <div class="post-actions">
+    <a href="{% url 'post_list' %}" class="btn btn-secondary"
+      >&larr; Back to all posts</a
+    >
+    <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger"
+      >Delete Post</a
+    >
+  </div>
+
+  <h3>Comments</h3>
+  {% if comments %}
+  <div class="comments">
+    {% for comment in comments %}
+    <div class="comment">
+      <p class="comment-author">{{ comment.author_name }} said:</p>
+      <p class="comment-date">{{ comment.created_at|date:"F j, Y" }}</p>
+      <p class="comment-content">{{ comment.content|linebreaks }}</p>
+      <a
+        href="{% url 'delete_comment' comment.pk %}"
+        class="btn btn-sm btn-danger"
+        >Delete Comment</a
+      >
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No comments yet.</p>
+  {% endif %}
+
+  <h4>Add a Comment</h4>
+  <form method="post" class="comment-form">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="author_name">Your Name:</label>
+      <input type="text" name="author_name" id="author_name" required />
+    </div>
+    <div class="form-group">
+      <label for="content">Your Comment:</label>
+      <textarea name="content" id="content" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Post Comment</button>
+  </form>
 </article>
 {% endblock %}

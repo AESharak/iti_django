@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %} {% block title %}Delete Author{% endblock %} {%
+block content %}
+<div class="delete-confirmation">
+  <h2>Delete Author</h2>
+  <p>
+    Are you sure you want to delete the author "{{ author.get_full_name }}"?
+  </p>
+  <p>
+    <strong>WARNING:</strong> This action cannot be undone and will also delete
+    all posts by this author and all comments on those posts.
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'author_detail' author.pk %}" class="btn btn-secondary"
+      >No, Cancel</a
+    >
+  </form>
+</div>
+{% endblock %}
