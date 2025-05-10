@@ -1,49 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Blog Posts</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .post {
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #eee;
-      }
-      .post-title {
-        color: #2c5282;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2em;
-      }
-      .post-date {
-        color: #718096;
-        font-size: 0.9em;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>My Django Blog</h1>
-    <h2>All Blog Posts</h2>
+{% extends "blog/base.html" %} {% block title %}All Blog Posts {% endblock %}
+{%block content %}
+<h2>All Blog Posts</h2>
 
-    {% if posts %}
-    <div class="posts">
-      {% for post in posts %}
-      <div class="post">
-        <a href="{{ post.get_absolute_url }}" class="post-title"
-          >{{ post.title }}</a
-        >
-        <p class="post-date">Posted on {{ post.created_at|date:"F j, Y" }}</p>
-      </div>
-      {% endfor %}
-    </div>
-    {% else %}
-    <p>No posts available.</p>
-    {% endif %}
-  </body>
-</html>
+{% if posts %}
+<div class="posts">
+  {% for post in posts %}
+  <div class="post">
+    <a href="{{ post.get_absolute_url }}" class="post-title"
+      >{{ post.title }}</a
+    >
+    <p class="post-date">Posted on {{ post.created_at|date:"F j, Y" }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No posts available.</p>
+{% endif %} {% endblock %}
