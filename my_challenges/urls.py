@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('challenges/', include('monthly_challenges.urls')),
     path('posts/', include('blog.urls')),
+    path('api/', include('blog.api_urls')),
     path('', RedirectView.as_view(url='posts/', permanent=True)),
 ]
 
